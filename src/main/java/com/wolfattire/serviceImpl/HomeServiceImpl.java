@@ -73,25 +73,25 @@ public class HomeServiceImpl implements HomeService{
 			tagList = Arrays.asList(tags);
 			
 			if (!tagList.isEmpty()) {
-				if (tagList.contains(ApplicationConstants.ORDER_CANCELLED)) {
+				if (tagList.contains(ApplicationConstants.ORDER_CANCELLED) || tagList.contains(ApplicationConstants.ORDER_CANCELLED.toLowerCase())) {
 					total_initial_cancelled_orders++;
-					total_initial_cancelled_amt = total_initial_cancelled_amt + order.getTotal_price() + shipping_cost;
+					total_initial_cancelled_amt = total_initial_cancelled_amt + order.getTotal_price();
 				}
-				else if (tagList.contains(ApplicationConstants.ORDER_DELIVERED)) {
+				else if (tagList.contains(ApplicationConstants.ORDER_DELIVERED) || tagList.contains(ApplicationConstants.ORDER_DELIVERED.toLowerCase())) {
 					total_successful_orders++;
-					total_delivered_amt = total_delivered_amt + order.getTotal_price() + shipping_cost;
+					total_delivered_amt = total_delivered_amt + order.getTotal_price();
 				}
-				else if (tagList.contains(ApplicationConstants.ORDER_RETURNED)) {
+				else if (tagList.contains(ApplicationConstants.ORDER_RETURNED) || tagList.contains(ApplicationConstants.ORDER_RETURNED.toLowerCase())) {
 					total_returned_orders++;
-					total_returned_amt = total_returned_amt + order.getTotal_price() + shipping_cost;
+					total_returned_amt = total_returned_amt + order.getTotal_price();
 				}
-				else if (tagList.contains(ApplicationConstants.ORDER_PLACED)) {
+				else if (tagList.contains(ApplicationConstants.ORDER_PLACED) || tagList.contains(ApplicationConstants.ORDER_PLACED.toLowerCase())) {
 					tatal_placed_orders++;
-					total_placed_amt = total_placed_amt + order.getTotal_price() + shipping_cost;
+					total_placed_amt = total_placed_amt + order.getTotal_price();
 				}
 				else {
 					total_initial_orders++;
-					total_initial_amt = total_initial_amt + order.getTotal_price() + shipping_cost;
+					total_initial_amt = total_initial_amt + order.getTotal_price();
 				}
 			}
 			else {

@@ -21,6 +21,33 @@ angular.module('home').controller('HomeController', [ '$scope','$state', 'HomeFa
         	}
         }
         
+        $scope.validateToDate = function (fromDate, toDate) {
+        	var curDate = new Date();
+        	$scope.errMsg = "";
+        	$scope.toDateError = false;
+        	if (new Date(toDate) < new Date(fromDate)){
+        		$scope.toDateError = true;
+        		$scope.errMsg = "To Date can't be less than From Date";
+        	}
+        	if (new Date(toDate) > curDate){
+        		$scope.toDateError = true;
+        		$scope.errMsg = "To Date can't be greater than Today's Date";
+        	}
+        		
+        }
+        
+        $scope.validateFromDate = function (fromDate) {
+        	var curDate = new Date();
+        	$scope.errMsg = "";
+        	$scope.fromDateError = false;
+        	
+        	if (new Date(fromDate) > curDate){
+        		$scope.fromDateError = true;
+        		$scope.errMsg = "From Date can't be greater than Today's Date";
+        	}
+        		
+        }
+        
         $scope.init();
         $scope.getReport = function () {
         	$scope.submitted = true;
