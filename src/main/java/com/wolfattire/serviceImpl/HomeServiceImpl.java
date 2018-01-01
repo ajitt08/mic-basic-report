@@ -89,6 +89,10 @@ public class HomeServiceImpl implements HomeService{
 					tatal_placed_orders++;
 					total_placed_amt = total_placed_amt + order.getTotal_price() + shipping_cost;
 				}
+				else {
+					total_initial_orders++;
+					total_initial_amt = total_initial_amt + order.getTotal_price() + shipping_cost;
+				}
 			}
 			else {
 				total_initial_orders++;

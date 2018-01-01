@@ -48,7 +48,7 @@ public class ApiRestClient {
 	
 	public ClientDto getDataFromShopify (String fromDate, String toDate) {
 		ClientDto clientDto = null;
-		String shopify_url = url + "?created_at_min=" + fromDate + "&created_at_max=" + toDate + "&fields=" + fields;
+		String shopify_url = url + "?limit=250&created_at_min=" + fromDate + "&created_at_max=" + toDate + "&fields=" + fields;
 		System.out.println("Rest call started");
 		try{
 			HttpEntity<String> httpEntity = new HttpEntity<>("", header);
