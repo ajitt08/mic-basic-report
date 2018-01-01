@@ -11,10 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.sun.javafx.binding.StringFormatter;
 import com.wolfattire.exception.ApplicationException;
 import com.wolfattire.home.dto.ClientDto;
-import com.wolfattire.responseDto.ReportResponseDto;
 
 @Service
 public class ApiRestClient {
