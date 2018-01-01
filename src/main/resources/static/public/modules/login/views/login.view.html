@@ -1,0 +1,29 @@
+<div class="row">
+    <section class="col-8 col-center">
+        <header class="text-center top-20">
+            <h1>Wolfattire Login</h1>
+        </header>
+        
+        <form role="form" id="loginForm" name="loginForm" novalidate>
+        	<div class="form-group">
+                <div class="col-6" ng-class="getUsernameErrorClass()">
+                    <label for="username">User Name</label>
+                    <input type="text" id="username" name="username" value="" placeholder="" ng-keyup="hideAuthenticationError()" ng-model="login.username" ng-required="true">
+                    <p class="error-text" ng-show="submitted && loginForm.username.$error.pattern">
+                        <em><spring:message code="error.email.invalid" /></em>
+                    </p>
+                </div>
+                <div class="col-6" ng-class="getPasswordErrorClass()">
+                    <label for="password">Password</label>
+                    <div class="form-icon">
+                        <i class="icon-lock"></i>
+                        <input type="password" id="password" name="password" value="" placeholder="" ng-keyup="hideAuthenticationError()" ng-model="login.password" ng-required="true">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center top-50">
+                <button ng-click="login()" type="submit" id="login" class="btn btn-lg btn-solid">Login</button>
+            </div>
+        </form>
+    </section>
+</div>

@@ -1,0 +1,115 @@
+<div class="row">
+	<section class="col-8 col-center">
+		<header class="text-center top-20">
+            <h1>Reports</h1>
+        </header>
+        
+        <form role="form" id="homeForm" name="homeForm" novalidate>
+			 <div>
+        		<div class="form-group">
+	                <div ng-class="getFieldErrorClass(homeForm.fromDate)">
+	                	<datepicker date-format="yyyy-MM-dd">
+						  <input id="fromDate"
+	                    		 name="fromDate"
+	                    		 ng-model="home.fromDate"  
+	                    		 type="text" 
+	                    		 ng-required='true'
+	                    		 placeholder="From Date"/>
+						</datepicker>
+						<div align="left" style="color: red" ng-show="submitted && homeForm.fromDate.$invalid">
+			            	<p><span>From Date is mandatory</span>
+			            </div>
+	                </div>
+	                <div>
+	                	<datepicker date-format="yyyy-MM-dd">
+						  <input id="toDate"
+	                    		 name="toDate"
+	                    		 ng-model="home.toDate"  
+	                    		 type="text" 
+	                    		 ng-required='true'
+	                    		 placeholder="To Date" />
+						</datepicker>
+						<div align="left" style="color: red" ng-show="submitted && homeForm.toDate.$invalid">
+			            	<p><span>To Date is mandatory</span>
+			            </div>
+	                </div>
+		            
+	            </div>
+	            <div align="center" style="color: red" ng-show="submitted && error">
+	            	<p><span>{{errMsg}}</span>
+	            </div>
+	            <div align="center">
+		        	<button ng-click="getReport()" type="submit" id="login" class="btn btn-lg btn-solid">Get Report</button>
+		        </div>
+        	</div>
+        	
+        </form>
+        <br>
+        <div ng-hide="showInitialForm">
+        		<table>
+        			<tr>
+        				<th>
+        					Parameters
+        				</th>
+        				<th>
+        					No Of Orders
+        				</th>
+        				<th>
+        					Revenue
+        				</th>
+        			</tr>
+        			<tr>
+        				<td>Orders Yet to confirm</td>
+        				<td class="col">{{report.total_initial_orders}}</td>
+        				<td class="col">-</td>
+        			</tr>
+        			<tr>
+        				<td>Total Number of Cancelled Orders</td>
+        				<td class="col">{{report.total_initial_cancelled_orders}}</td>
+        				<td class="col">-</td>
+        			</tr>
+        			<tr>
+        				<td>Total Number of Placed Orders</td>
+        				<td class="col">{{report.tatal_placed_orders}}</td>
+        				<td class="col">{{report.total_placed_amt}}</td>
+        			</tr>
+        			<tr>
+        				<td>Total Number of Returned Orders</td>
+        				<td class="col">{{report.total_returned_orders}}</td>
+        				<td class="col">{{report.total_returned_amt}}</td>
+        			</tr>
+        			<tr>
+        				<td>Total Number of Successful Orders</td>
+        				<td class="col">{{report.total_successful_orders}}</td>
+        				<td class="col">{{report.total_delivered_amt}}</td>
+        			</tr>
+        			<tr>
+        				<td>Total Number of Orders</td>
+        				<td class="col">{{report.total_orders}}</td>
+        				<td class="col">{{report.total_revenue}}</td>
+        			</tr>
+        		</table>
+        		<br>
+        		<br>
+        		
+        		<table>
+        			<tr>
+        				<td>Company Expenses (Salary, Ads, Software etc..)</td>
+        				<td class="col">{{report.total_comp_expense}}</td>
+        			</tr>
+        			<tr>
+        				<td>Blocked Amount </td>
+        				<td class="col">{{report.total_returned_amt}}</td>
+        			</tr>
+        			<tr>
+        				<td>Profit </td>
+        				<td class="col">{{report.total_profit}}</td>
+        			</tr>
+        			<tr>
+        				<td>Revenue </td>
+        				<td class="col">{{report.total_revenue}}</td>
+        			</tr>
+        		</table>
+        	</div>
+	</section>
+</div>
