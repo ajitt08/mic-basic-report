@@ -5,10 +5,10 @@
         </header>
         
         <form role="form" id="homeForm" name="homeForm" novalidate>
-			 <div>
-        		<div class="form-group">
+			 
+        		<div>
 	                <div ng-class="getFieldErrorClass(homeForm.fromDate)">
-	                	<datepicker date-format="yyyy-MM-ddThh:mm:ss">
+	                	<datepicker date-format="yyyy-MM-dd">
 						  <input id="fromDate"
 	                    		 name="fromDate"
 	                    		 ng-model="home.fromDate"  
@@ -17,15 +17,24 @@
 	                    		 placeholder="From Date"
 	                    		 ng-change='validateFromDate(home.fromDate)'/>
 						</datepicker>
+						
 						<div align="left" style="color: red" ng-show="submitted && homeForm.fromDate.$invalid">
 			            	<p><span>From Date is mandatory</span>
 			            </div>
 			             <div align="left" style="color: red" ng-show="fromDateError">
 			            	<p><span>{{errMsg}}</span>
 			            </div>
+			            
+			            <input  type="time" 
+								id="fromTime" 
+								name="fromTime" 
+								ng-model="time.from"
+       							placeholder="HH:mm:ss" 
+       							required 
+       							style="margin-top: 20px;"/>
 	                </div>
-	                <div>
-	                	<datepicker date-format="yyyy-MM-ddThh:mm:ss">
+	                <div style="margin-top: 20px;">
+	                	<datepicker date-format="yyyy-MM-dd">
 						  <input id="toDate"
 	                    		 name="toDate"
 	                    		 ng-model="home.toDate"  
@@ -34,12 +43,21 @@
 	                    		 placeholder="To Date" 
 	                    		 ng-change='validateToDate(home.fromDate,home.toDate)'/>
 						</datepicker>
+						
 						<div align="left" style="color: red" ng-show="submitted && homeForm.toDate.$invalid">
 			            	<p><span>To Date is mandatory</span>
 			            </div>
 			            <div align="left" style="color: red" ng-show="toDateError">
 			            	<p><span>{{errMsg}}</span>
 			            </div>
+				        
+				        <input  type="time" 
+									id="toTime" 
+									name="toTime" 
+									ng-model="time.to"
+	       							placeholder="HH:mm:ss" 
+	       							required 
+	       							style="margin-top: 20px;"/>
 	                </div>
 		            
 	            </div>
@@ -49,7 +67,7 @@
 	            <div align="center">
 		        	<button ng-click="getReport()" type="submit" id="login" class="btn btn-lg btn-solid" ng-disabled="fromDateError || toDateError">Get Report</button>
 		        </div>
-        	</div>
+        	
         	
         </form>
         <br>
@@ -106,8 +124,12 @@
         				<td class="col">{{report.total_comp_expense | currency : "&#8377;"}}</td>
         			</tr>
         			<tr>
-        				<td>Blocked Amount </td>
+        				<td>Blocked Amount (Returned Items)</td>
         				<td class="col">{{report.total_returned_amt | currency : "&#8377;"}}</td>
+        			</tr>
+        			<tr>
+        				<td>In-transit Amount (Placed with manufacturer's)</td>
+        				<td class="col">{{report.total_placed_amt | currency : "&#8377;"}}</td>
         			</tr>
         			<tr>
         				<td>Profit </td>

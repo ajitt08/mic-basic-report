@@ -6,6 +6,9 @@ angular.module('home').controller('HomeController', [ '$scope','$state', 'HomeFa
         $scope.home = {};
         $scope.showInitialForm = true;
         
+        $scope.time = {
+        	       value: new Date(1970, 0, 1, 14, 57, 0)
+        	     };
         
         $scope.init = function () {
         	console.log($scope.report);
@@ -51,6 +54,8 @@ angular.module('home').controller('HomeController', [ '$scope','$state', 'HomeFa
         $scope.init();
         $scope.getReport = function () {
         	$scope.submitted = true;
+        	$scope.home.fromDateTime = $scope.home.fromDate+"T"+$scope.homeForm.fromTime.$viewValue;
+        	$scope.home.toDateTime = $scope.home.toDate+"T"+$scope.homeForm.toTime.$viewValue;
         	if ($scope.homeForm.$valid) {
         		HomeFactory.getReport($scope.home).then(function (response) {
                     console.log("response:"+response);
